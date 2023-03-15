@@ -7,12 +7,12 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
-        stage('build') {
+        stage("build") {
             steps {
                 echo 'Building the application...'
             }
         }
-        stage('test') {
+        stage("test") {
             when {
                 expression {
                     params.executeTests
@@ -23,7 +23,7 @@ pipeline {
                 
             }
         }
-        stage('deploy') {
+        stage("deploy") {
             steps {
                     echo 'Deploying the application...'
                     echo "deploying version ${params.VERSION}"
