@@ -17,3 +17,9 @@ def deployApp() {
 } 
 
 return this
+
+
+// def function(){
+//     echo 'building the application...'
+// }
+// return this
