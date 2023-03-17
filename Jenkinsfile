@@ -23,10 +23,12 @@ pipeline {
             }
         }
 
-        stage("build image") {
+        stage("build and push image") {
             steps {
                 script {
                     buildImage 'hussainsheriffj/demo-app:jma-2.2'
+                    dockerLogin()
+                    dockerPush 'hussainsheriffj/demo-app:jma-2.2'
                 }
             }
         }
