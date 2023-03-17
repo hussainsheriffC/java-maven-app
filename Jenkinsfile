@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 //@Library('jenkins-shared-lib') ---this will not work since we remove the global git variable
 
-library identifier: 'jenkins-shared-lib@master', retriever: modernSCM(
+library identifier: 'jenkins-shared-lib@main', retriever: modernSCM(
         [$class: 'GitSCMSource',
          remote: 'https://github.com/hussainsheriffC/jenkins-shared-lib.git',
          credentialsId: 'github-credentials'
