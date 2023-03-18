@@ -1,12 +1,15 @@
-//def gv
+#!/usr/bin/env groovy
 
 pipeline {
-    agent none
+    agent any
+    tools {
+            maven 'maven-3.9'
+        }
     stages {
-        stage("test") {
+        stage('build app') {
             steps {
                 script {
-                    echo "Testing the application..."
+                    echo "Building the application..."
                     echo "Executing pipeline for branch $BRANCH_NAME"
                 }
             }
