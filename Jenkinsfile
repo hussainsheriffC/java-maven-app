@@ -3,7 +3,7 @@
 pipeline {
     agent any
     tools {
-            maven 'maven-3.9'
+        maven 'maven-3.9'
         }
     stages {
         stage('increment version'){
@@ -39,6 +39,7 @@ pipeline {
                 }
             }
         }
+        }
         
     
         stage("deploy") {
@@ -47,6 +48,7 @@ pipeline {
                     echo "Deploying docker image..."
                 }
             }
-        }
-    }   
+        }   
+    }
 }
+
