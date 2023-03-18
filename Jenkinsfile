@@ -55,7 +55,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         sh 'git config --global user.email "hussain.sheriff@cloudreach.com"'
-                        sh 'git config --global user.name "hussainsheriffC"'
+                        sh 'git config --global user.name "jenkins"'
+                        sh 'git config --global --unset https.proxy'
                         
                         sh 'git status'
                         sh 'git branch'
