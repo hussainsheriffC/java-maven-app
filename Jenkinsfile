@@ -38,8 +38,8 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    echo 'deploying docker images to ec2'
-                    def shellCmd = "bash ./server-cmds.sh"
+                    echo 'deploying docker images to ec2...'
+                    def shellCmd = "bash ./server-cmds.sh ${IMAGE_NAME}"
                     sshagent(['ec2-server-key']) {
                         sh "scp -o StrictHostKeyChecking=no server-cmds.sh ec2-user@13.235.86.108:/home/ec2-user"
                         sh "scp docker-compose.yaml ec2-user@13.235.86.108:/home/ec2-user"
