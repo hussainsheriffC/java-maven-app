@@ -35,19 +35,15 @@ pipeline {
                 }
             }
         }
-        stage("deploy") {
+        stage('deploy') {
             steps {
                 script {
                     echo 'deploying docker images to ec2'
-                    //def dockerComposeCmd = "docker-compose -f docker-compose.yaml up --detach"   --we have added this line in sh script\
                     def shellCmd = "bash ./server-cmds.sh"
-                    //def dockerCmd = 'docker run -p 8080:8080 -d hussainsheriffj/demo-app:java-maven-1.0'
                     sshagent(['ec2-server-key']) {
-                        sh "scp server-cmds.sh ec2-user@65.2.186.68:/home/ec2-user"
-                        sh "scp docker-compose.yaml ec2-user@65.2.186.68:/home/ec2-user"
-                        //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.214.134 ${dockerCmd}"
-                        //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.214.134 ${dockerComposeCmd}"
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@65.2.186.68 ${shellCmd}"
+                        sh "scp server-cmds.sh ec2-user@13.235.86.108:/home/ec2-user"
+                        sh "scp docker-compose.yaml ec2-user@13.235.86.108:/home/ec2-user"
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.235.86.108 ${shellCmd}"
                     }
                 }
             }
