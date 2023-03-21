@@ -43,11 +43,11 @@ pipeline {
                     def shellCmd = "bash ./server-cmds.sh"
                     //def dockerCmd = 'docker run -p 8080:8080 -d hussainsheriffj/demo-app:java-maven-1.0'
                     sshagent(['ec2-server-key']) {
-                        sh "scp server-cmds.sh ec2-user@3.109.214.192:/home/ec2-user"
-                        sh "scp docker-compose.yaml ec2-user@3.109.214.192:/home/ec2-user"
+                        sh "scp server-cmds.sh ec2-user@65.2.186.68:/home/ec2-user"
+                        sh "scp docker-compose.yaml ec2-user@65.2.186.68:/home/ec2-user"
                         //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.214.134 ${dockerCmd}"
                         //sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.214.134 ${dockerComposeCmd}"
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.109.214.192 ${shellCmd}"
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@65.2.186.68 ${shellCmd}"
                     }
                 }
             }
