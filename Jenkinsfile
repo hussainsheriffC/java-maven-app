@@ -13,7 +13,10 @@ pipeline {
     tools {
         maven 'maven-3.9'
     }
-    
+    environment {
+        IMAGE_NAME = 'hussainsheriffj/demo-app:java-maven-2.0'
+    }
+
     stages {
         stage('increment version'){
             steps {
