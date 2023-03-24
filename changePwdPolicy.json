@@ -1,12 +1,3 @@
-aws ec2 run-instances:
-    --image-id ami-02f3f602d23f1659d
-    --count 1
-    --instance-type t2.micro
-    --key-name mycliKey
-    --security-group-ids sg-0682f90908edc477c
-    --subnet-id subnet-042e1cdc714a6e219
-
-
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -18,7 +9,7 @@ aws ec2 run-instances:
         {
             "Effect": "Allow",
             "Action": "iam:ChangePassword",
-            "Resource": "arn:aws:iam::664574038682:user/${aws:username}"
+            "Resource": "arn:aws:iam::839895325100:user/${aws:username}"
             
         }
     ]
