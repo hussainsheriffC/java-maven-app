@@ -35,13 +35,23 @@ pipeline {
                 }
             }
         }
+        stage('provision server'){
+            //tf will provision a server
+            sh "terraform init"
+        }        
         stage("deploy") {
             steps {
                 script {
                     echo 'deploying docker images to ec2'
-                    def dockerCmd = 'docker run -p 8081:8081 -d hussainsheriffj/demo-app:java-maven-1.0'
+
+                    def shellCmd = "bash ./server-cmds.sh ${IMAGE_NAME}"
+                    def ec2Instance = "ec2-user@35.180.251.121"
+
+
                     sshagent(['ec2-server-key']) {
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.214.134 ${dockerCmd}"
+                        sh "scp server-cmds.sh ${ec2Instance}:/home/ec2-user"
+                        sh "scp docker-compose.yaml ${ec2Instance}:/home/ec2-user"
+                        sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${shellCmd}"
                     }
                 }
             }
