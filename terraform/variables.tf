@@ -5,7 +5,7 @@ variable "vpc-cidr-block" {
     default = "10.0.0.0/16"
 }
 variable "subnet-cidr-block" {
-    default = "10.0.10.1/24"
+    default = "10.0.10.0/24"
 }
 variable "avail_zone" {
     default = "us-east-1a"
